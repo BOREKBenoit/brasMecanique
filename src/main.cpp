@@ -33,9 +33,26 @@ void setup() {
 }
 
 void loop() {
+  // Placement du bras en position de capturer un objet
+  Braccio.ServoMovement(30,          180,  45, 180, 180, 90, 10);
+  Braccio.ServoMovement(30,          180,  95, 180, 180, 90, 10);
+  delay(1000);
 
-  Braccio.ServoMovement(20,           90,  90, 90, 90, 90, 73);  
+  // Capture de l'objet
+  Braccio.ServoMovement(30,          180,  95, 180, 180, 90, 73);
+  Braccio.ServoMovement(30,          180,  30, 180, 180, 90, 73);
 
+  //Rotation du bras pour deposer l'objet ailleurs
+  Braccio.ServoMovement(30,          90,  30, 180, 180, 90, 73);
+  Braccio.ServoMovement(30,          90,  95, 180, 180, 90, 73);
+
+  //Depot de l'objet
+  Braccio.ServoMovement(30,          90,  95, 180, 180, 90, 10);
+  
+  delay(5000);
+  
+ 
+  
 
 
 }
