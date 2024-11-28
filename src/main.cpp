@@ -12,6 +12,7 @@
 
 #include <Braccio.h>
 #include <Servo.h>
+#include <SPI.h>
 
 Servo base;
 Servo shoulder;
@@ -20,36 +21,49 @@ Servo wrist_rot;
 Servo wrist_ver;
 Servo gripper;
 
+int objects = 2; // Cette variable va servir pour dire au robot dans qu'elle position il devra placer l'objet
+volatile byte receivedData;
+
 void setup() {
-  //Initialization functions and set up the initial position for Braccio
-  //All the servo motors will be positioned in the "safety" position:
-  //Base (M1):90 degrees
-  //Shoulder (M2): 45 degrees
-  //Elbow (M3): 180 degrees
-  //Wrist vertical (M4): 180 degrees
-  //Wrist rotation (M5): 90 degrees
-  //gripper (M6): 10 degrees
-  Braccio.begin();
+  SPI.begin(); // Initialisation en tant qu'esclave
+  SPI.setClockDivider(SPI_CLOCK_DIV8); // Réglage de la vitesse du SPI
+  pinMode(10, INPUT); // SS comme entrée
+  SPI.attachInterrupt(); // Activer les interruptions SPI
+  Serial.begin(9600);
+
+
+Braccio.begin();
+Serial.println("Start");
+}
+
+ISR(SPI_STC_vect) { // Interruption lorsqu'une donnée est reçue
+  receivedData = SPDR; // SPDR contient les données reçues
 }
 
 void loop() {
-  // Placement du bras en position de capturer un objet
-  Braccio.ServoMovement(30,          180,  45, 180, 180, 90, 10);
-  Braccio.ServoMovement(30,          180,  95, 180, 180, 90, 10);
-  delay(1000);
+ if (receivedData) {
+    Serial.print("Reçu : ");
+    Serial.println((char)receivedData);
+       if((char)receivedData == 'H'){
+      Braccio.ServoMovement(30, 90, 90, 180, 180, 90, 10);
 
-  // Capture de l'objet
-  Braccio.ServoMovement(30,          180,  95, 180, 180, 90, 73);
-  Braccio.ServoMovement(30,          180,  30, 180, 180, 90, 73);
+    }
 
-  //Rotation du bras pour deposer l'objet ailleurs
-  Braccio.ServoMovement(30,          90,  30, 180, 180, 90, 73);
-  Braccio.ServoMovement(30,          90,  95, 180, 180, 90, 73);
+    receivedData = 0; // Réinitialiser après affichage
 
-  //Depot de l'objet
-  Braccio.ServoMovement(30,          90,  95, 180, 180, 90, 10);
+ 
+  }
+
+//Placement du robot en position de capture
+//Braccio.ServoMovement(30, 90, 90, 180, 180, 90, 10);
+
+
+delay(5000);
+
+
+
   
-  delay(5000);
+
   
  
   
