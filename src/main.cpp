@@ -12,7 +12,7 @@
 
   Benoit BOREK
   Mathis BENOIT
-  Alban de Farcy
+  Alban de Farcy de Pontfarcy
   */
 #include <Braccio.h>
 #include <Servo.h>
