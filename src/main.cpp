@@ -2,7 +2,8 @@
   Bras Mécanique en SPI
   
   Programme basique sur Arduino UNO
-  IDE Visual Studio Code 1.95.2
+  Compilé sur Visual Studio Code v1.95.2
+  Avec l'IDE PlatformIO v3.3.3
   
   Constituants :
   -  Bras mécanique Braccio
