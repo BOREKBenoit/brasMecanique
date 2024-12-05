@@ -13,7 +13,7 @@
 #include <Braccio.h>
 #include <Servo.h>
 #include <SPI.h>
-tessr
+
 Servo base;
 Servo shoulder;
 Servo elbow;
