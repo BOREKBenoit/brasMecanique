@@ -1,19 +1,26 @@
+/* 
+  Bras Mécanique en SPI
+  
+  Programme basique sur Arduino UNO
+  Compilé sur Visual Studio Code v1.95.2
+  Avec l'IDE PlatformIO v3.3.3
+  
+  Constituants :
+  -  Bras mécanique Braccio
+  -  Adruino UNO avec shield associé
 
-/*
-  simpleMovements.ino
+  Version 1 : 05/12/2024
 
- This  sketch simpleMovements shows how they move each servo motor of Braccio
-
- Created on 18 Nov 2015
- by Andrea Martino
-
- This example is in the public domain.
- */
-
+  -  Benoit BOREK
+  -  Mathis BENOIT
+  -   Alban de Farcy de Pontfarcy
+  */
+ 
 #include <Braccio.h>
 #include <Servo.h>
 #include <SPI.h>
 
+// Nom de chaques servo-moteur
 Servo base;
 Servo shoulder;
 Servo elbow;
