@@ -10,9 +10,9 @@
 
   Version 1 : 05/12/2024
 
-  Benoit BOREK
-  Mathis BENOIT
-  Alban de Farcy de Pontfarcy
+  -  Benoit BOREK
+  -  Mathis BENOIT
+  -   Alban de Farcy de Pontfarcy
   */
  
 #include <Braccio.h>
