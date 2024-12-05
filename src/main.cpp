@@ -18,8 +18,6 @@
 #include <Braccio.h>
 #include <Servo.h>
 
-/*J'aime pas noam sanoussi*/
-
 Servo base;
 Servo shoulder;
 Servo elbow;
