@@ -51,8 +51,8 @@ void loop() {
     Serial.print("Reçu : ");
     Serial.println((char)receivedData);
        if((char)receivedData == 'H'){
+        // temps d'execution, axe horizontal, rotation base, rotation coude, rotation poignet, rotation pince, pince (entre 10° et 73°)
       Braccio.ServoMovement(30, 90, 90, 180, 180, 90, 10);
-
     }
 
     receivedData = 0; // Réinitialiser après affichage
