@@ -19,6 +19,7 @@
 #include <Servo.h>
 #include <SPI.h>
 
+// Nom de chaques servo-moteur
 Servo base;
 Servo shoulder;
 Servo elbow;
