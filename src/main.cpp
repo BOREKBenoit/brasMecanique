@@ -10,9 +10,9 @@
 
   Version 1 : 05/12/2024
 
-  Benoit BOREK
-  Mathis BENOIT
-  Alban de Farcy de Pontfarcy
+  - Benoit BOREK
+  - Mathis BENOIT
+  - Alban de Farcy de Pontfarcy
   */
  
 #include <Braccio.h>
@@ -27,7 +27,7 @@ Servo gripper;
 
 int time = 5;
 
-void setup() {
+void setup(){
 
   Serial.begin(9600);
 
@@ -42,7 +42,5 @@ void loop() {
 
       Braccio.ServoMovement(time, 90, 90, 180, 180, 90, 10);
       delay(50000);
-
-
 
 }
