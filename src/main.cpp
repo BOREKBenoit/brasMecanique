@@ -13,7 +13,7 @@
   Benoit BOREK
   Mathis BENOIT
   Alban de Farcy de Pontfarcy
-  Noam le singe
+  Noam Sanoussi
   */
  
 #include <Braccio.h>
