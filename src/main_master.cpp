@@ -22,10 +22,23 @@
 #include <SPI.h>
 #include <Servo.h>
 
-void setup(){
+#define MISO 12
+#define MOSI 11
+#define SCK 13
+#define CS 10
 
+void setup(){
+    SPI.begin(); // Initialisation en tant qu'esclave
+  SPI.setClockDivider(SPI_CLOCK_DIV8); // Réglage de la vitesse du SPI
+  pinMode(CS, INPUT);           // CS comme entrée
+  pinMode(MISO, INPUT);         //MISO en tant qu'input (Master Input Slave Output)
+  pinMode(MOSI, OUTPUT);        //MOSI en tant qu'output (Master Output Slave Input)
+  
+
+  SPI.attachInterrupt(); // Activer les interruptions SPI
+  Serial.begin(9600);
 }
 
 void loop(){
-    
+
 }
