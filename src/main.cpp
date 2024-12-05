@@ -1,15 +1,4 @@
 
-/*
-  simpleMovements.ino
-
- This  sketch simpleMovements shows how they move each servo motor of Braccio
-
- Created on 18 Nov 2015
- by Andrea Martino
-
- This example is in the public domain.
- */
-
 #include <Braccio.h>
 #include <Servo.h>
 #include <SPI.h>
