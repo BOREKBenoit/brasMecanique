@@ -1,4 +1,19 @@
+/* 
+  Bras Mécanique en SPI
+  
+  Programme basique sur Arduino UNO
+  IDE Visual Studio Code 1.95.2
+  
+  Constituants :
+  -  Bras mécanique Braccio
+  -  Adruino UNO avec shield associé
 
+  Version 1 : 05/12/2024
+
+  Benoit BOREK
+  Mathis BENOIT
+  Alban DeFarcy
+  */
 #include <Braccio.h>
 #include <Servo.h>
 #include <SPI.h>
