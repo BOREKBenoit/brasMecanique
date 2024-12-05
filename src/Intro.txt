@@ -1,0 +1,3 @@
+Voici le but de ce projet
+
+Le but de ce projet est de contrôler un bras méchanique 6 axes Arduino Braccio et de le faire communiquer en SPI
