@@ -1,5 +1,5 @@
 /* 
-  Bras Mécanique en SPI
+  Bras Mécanique en SPI - Danse
   
   Programme basique sur Arduino UNO
   IDE Visual Studio Code 1.95.2
@@ -8,18 +8,17 @@
   -  Bras mécanique Braccio
   -  Adruino UNO avec shield associé
 
-  Version 1 : 05/12/2024
+  Version 2 : 05/12/2024
 
-  -  Benoit BOREK
-  -  Mathis BENOIT
-  -   Alban de Farcy de Pontfarcy
-  */
+  - Benoit BOREK
+  - Mathis BENOIT
+  - Alban de Farcy de Pontfarcy
+  - Noam Sanoussi
+*/
  
 #include <Braccio.h>
 #include <Servo.h>
-#include <SPI.h>
 
-// Nom de chaques servo-moteur
 Servo base;
 Servo shoulder;
 Servo elbow;
@@ -27,52 +26,57 @@ Servo wrist_rot;
 Servo wrist_ver;
 Servo gripper;
 
-int objects = 2; // Cette variable va servir pour dire au robot dans qu'elle position il devra placer l'objet
-volatile byte receivedData;
+int time = 10; // Temps pour chaque mouvement (plus bas = plus rapide)
 
 void setup() {
-  SPI.begin(); // Initialisation en tant qu'esclave
-  SPI.setClockDivider(SPI_CLOCK_DIV8); // Réglage de la vitesse du SPI
-  pinMode(10, INPUT); // SS comme entrée
-  SPI.attachInterrupt(); // Activer les interruptions SPI
   Serial.begin(9600);
-
-
-Braccio.begin();
-Serial.println("Start");
-}
-
-ISR(SPI_STC_vect) { // Interruption lorsqu'une donnée est reçue
-  receivedData = SPDR; // SPDR contient les données reçues
+  Braccio.begin(); // Initialisation du bras
+  Serial.println("Danse du Braccio commence !");
 }
 
 void loop() {
- if (receivedData) {
-    Serial.print("Reçu : ");
-    Serial.println((char)receivedData);
-       if((char)receivedData == 'H'){
-        // temps d'execution, axe horizontal, rotation base, rotation coude, rotation poignet, rotation pince, pince (entre 10° et 73°)
-      Braccio.ServoMovement(30, 90, 90, 180, 180, 90, 10);
-    }
+  // Mouvement 1 : Bras en position neutre
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
-    receivedData = 0; // Réinitialiser après affichage
+  // Mouvement 2 : Rotation de la base
+  Braccio.ServoMovement(time, 45, 90, 90, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 135, 90, 90, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
- 
-  }
+  // Mouvement 3 : Épaule haut-bas
+  Braccio.ServoMovement(time, 90, 45, 90, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 135, 90, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
-//Placement du robot en position de capture
-//Braccio.ServoMovement(30, 90, 90, 180, 180, 90, 10);
+  // Mouvement 4 : Coude plié-déplié
+  Braccio.ServoMovement(time, 90, 90, 45, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 135, 90, 90, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
+  // Mouvement 5 : Rotation et inclinaison du poignet
+  Braccio.ServoMovement(time, 90, 90, 90, 45, 45, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 135, 135, 10);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
-delay(5000);
+  // Mouvement 6 : Ouverture et fermeture de la pince
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 0);
+  delay(500);
+  Braccio.ServoMovement(time, 90, 90, 90, 90, 90, 10);
+  delay(500);
 
-
-
-  
-
-  
- 
-  
-
-
+  // Pause avant de recommencer
+  delay(1000);
 }
