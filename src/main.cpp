@@ -15,7 +15,6 @@
   - Alban de Farcy de Pontfarcy
   - Noam Sanoussi
 */
-#include <Arduino.h>
 #include <Braccio.h>
 #include <Servo.h>
 
