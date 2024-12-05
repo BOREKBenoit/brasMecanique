@@ -18,6 +18,7 @@
 #include <Braccio.h>
 #include <Servo.h>
 
+/*J'aime pas noam sanoussi*/
 
 Servo base;
 Servo shoulder;
@@ -37,8 +38,6 @@ Serial.println("Start");
 }
 
 
-
-
 void loop() {
 
       Braccio.ServoMovement(time, 90, 90, 180, 180, 90, 10);
@@ -46,21 +45,6 @@ void loop() {
       Braccio.ServoMovement(time, 90, 90, 180, 180, 90, 10);
       delay(50000);
 
-      
-      
-      
-
-
-
-
-
-
-
-  
-
-  
- 
-  
 
 
 }
